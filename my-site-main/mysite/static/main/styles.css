@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+img {
+    width: auto; /* Устанавливаем ширину изображений в 500 пикселей */
+    height: 300px; /* Высота будет автоматически подстраиваться */
+    border-radius: 5px;
+   
+}
+header {
+    background-color: #39ce3e;
+    color: rgb(255, 255, 255);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+}
+.nav-links a {
+    margin-left: 20px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+}
+.nav-links a:hover {
+    text-decoration: underline;
+}
+.content {
+    padding: 20px;
+}
+.selected{
+    background-color: #27b940;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-links {
+    list-style-type: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.footer-links a {
+    margin: 0 15px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+.back-button {
+    background-color: #4CAF50; /* Зелёный цвет */
+    border: none; /* Без границы */
+    color: white; /* Цвет текста */
+    padding: 15px 32px; /* Отступы */
+    text-align: center; /* По центру */
+    text-decoration: none; /* Без подчеркивания */
+    display: inline-block; /* В блоке */
+    font-size: 16px; /* Размер шрифта */
+    margin: 10px 2px; /* Поля */
+    cursor: pointer; /* Указатель мыши */
+    border-radius: 8px; /* Скругленные углы */
+}
+
+.back-button:hover {
+    background-color: #45a049; /* Более темный зеленый при наведении */
+}

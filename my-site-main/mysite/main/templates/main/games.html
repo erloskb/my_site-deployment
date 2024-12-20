@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лучшие игры 2011 года</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/styles.css' %}" />
+</head>
+<body>
+    <header>
+        <div class="logo">Мой Сайт</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li class="selected"><a href="{% url 'games' %}">Игры</a></li>
+                <li><a href="{% url 'movies' %}">Фильмы</a></li>
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a href="login.html">Войти</a></li>
+                <li><a href="registration.html">Зарегистрироваться</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Лучшие игры 2011 года</h1>
+    <ul>
+        {% for game in games %}
+        <li>
+            <h2><a href="{% url 'game_detail' game.id %}">{{ game.title }}</a></h2>  <!-- Изменена ссылка на ID игры -->
+            <div><img src="{{ game.cover_image.url }}" alt="{{ game.title }}"></div>
+            <iframe width="560" height="315" src="{{ game.trailer_url }}" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            <p>{{ game.plot }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <footer>
+        &copy; 2023 Лучшие игры
+        <ul class="footer-links">
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="info.html">Информация о сайте</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

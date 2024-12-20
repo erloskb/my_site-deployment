@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ game.title }} ({{ game.release_year }})</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/styles.css' %}" />
+</head>
+<body>
+    <a href="{% url 'games' %}" class="back-button">Назад</a>
+    <h1>{{ game.title }} ({{ game.release_year }})</h1>
+    <img src="{{ game.cover_image.url }}" alt="{{ game.title }}" height="1000" width="200">
+    <iframe width="560" height="315" src="{{ game.trailer_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <p><strong>{{ game.title }}</strong> – это {{ game.genre }} игра, разработанная {{ game.developer }}. Игра вышла в {{ game.release_year }} и была высоко оценена как критиками, так и игроками, получив множество наград.</p>
+
+    <h2>Основные характеристики игры:</h2>
+
+    <h3>Сюжет</h3> 
+    <ul>
+        <li><strong>Главная линия</strong>: {{ game.plot }}</li>
+        <li><strong>Темы</strong>: {{ game.themes }}</li>
+    </ul>
+
+    <h3>Персонажи</h3>
+    <ul>
+        {% for character in game.characters.all %}
+            <li><strong>{{ character.name }}</strong>: {{ character.description }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Графика и звуковое сопровождение</h3>
+    <ul>
+        <li><strong>Визуальный стиль</strong>: {{ game.visual_style }}</li>
+        <li><strong>Музыка</strong>: {{ game.music }}</li>
+    </ul>
+
+    <h3>Награды</h3>
+    <p>{{ game.awards }}</p>
+
+    <h2>Влияние и наследие</h2>
+    <p>{{ game.legacy }}</p>
+
+    <p>Подробнее на <a href="{{ game.wikipedia_url }}">википедии</a></p>
+</body>
+</html>

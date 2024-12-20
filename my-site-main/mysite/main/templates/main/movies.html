@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Топ 10 фильмов 2011 года</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/styles.css' %}" />
+</head>
+<body>
+    <header>
+        <div class="logo">Мой Сайт</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url 'games' %}">Игры</a></li>
+                <li class="selected"><a href="{% url 'movies' %}">Фильмы</a></li>
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a href="login.html">Войти</a></li>
+                <li><a href="registration.html">Зарегистрироваться</a></li>
+            </ul>
+        </nav> 
+    </header>
+
+    <main>
+        <h1>Топ 3 фильма 2011 года</h1>
+        <ol>
+            {% for movie in movies %}
+            <li>
+                <h2><a href="{% url 'movie_detail' movie.id %}">{{ movie.title }}</a></h2>  <!-- Изменена ссылка на ID фильма -->
+                <div>
+                    <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+                    <iframe width="560" height="315" src="{{ movie.trailer_url }}" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p><em>Режиссер:</em> {{ movie.director }}</p>
+                <p><em>Описание:</em> {{ movie.description }}</p>
+            </li>
+            {% endfor %}
+        </ol>
+    </main>
+
+    <footer>
+        &copy; 2023 Лучшие фильмы
+    </footer>
+</body>
+</html>

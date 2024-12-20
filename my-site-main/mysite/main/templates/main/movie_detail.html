@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }} ({{ movie.original_title }})</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/styles.css' %}" />
+</head>
+<body>
+    <a href="{% url 'movies' %}" class="back-button">Назад</a>
+    <h1>{{ movie.title }} ({{ movie.original_title }})</h1>
+    <img src="{{ movie.image.url }}" alt="{{ movie.title }}" height="1000" width="200">
+    <iframe width="560" height="315" src="{{ movie.trailer_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <p><strong>{{ movie.title }}</strong> – это {{ movie.genre }}, написанная и срежиссированная {{ movie.director }}. Фильм вышел в {{ movie.release_year }} и стал признанным произведением, получившим множество наград.</p>
+
+    <h2>Основные характеристики фильма:</h2>
+
+    <h3>Сюжет</h3> 
+    <ul>
+        <li><strong>Главная линия</strong>: {{ movie.plot }}</li>
+        <li><strong>Темы</strong>: {{ movie.themes }}</li>
+    </ul>
+
+    <h3>Персонажи</h3>
+    <ul>
+        {% for character in movie.characters.all %}
+            <li><strong>{{ character.name }}</strong>: {{ character.description }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Визуальные и звуковые эффекты</h3>
+    <ul>
+        <li><strong>Съемки</strong>: {{ movie.visual_style }}</li>
+        <li><strong>Музыка</strong>: {{ movie.music }}</li>
+    </ul>
+
+    <h3>Награды</h3>
+    <p>{{ movie.awards }}</p>
+
+    <h2>Влияние и наследие</h2>
+    <p>{{ movie.legacy }}</p>
+
+    <p>Подробнее на <a href="{{ movie.wikipedia_url }}">википедии</a></p>
+</body>
+</html>
